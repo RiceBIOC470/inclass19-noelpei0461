@@ -12,10 +12,22 @@ treatment2 =[   152   152   151   143   161   142   142   141   161   135];
 
 %A. Make a bar plot of the means of each group with errorbars (Hint, use
 %bar and then use 'hold on' and then errorbar). 
+
+c=[mean(placebo) mean(treatment1) mean(treatment2)];
+bar(c);
+hold on;
+err=8*ones(size(c))
+errorbar(c,err)
+
 %B. Run a one way ANOVA analysis to see whether any of the treatment groups showed
 %a statistically signficant difference. 
+data=[placebo treatment1 treatment2];
+groups={'placebo','placebo','placebo','placebo','placebo','placebo','placebo','placebo','placebo','placebo','treatment1','treatment1','treatment1','treatment1','treatment1','treatment1','treatment1','treatment1','treatment1','treatment1','treatment2','treatment2','treatment2','treatment2','treatment2','treatment2','treatment2','treatment2','treatment2','treatment2'};
+p=anova1(data,groups)
 %C. use the multcompare function to look at all pairs of samples and
 %indicate which are significantly different. 
+[p,table,stats]=anova1(data,groups);
+multcompare(stats)
 
 %Problem 2. In this directory, you will find a .mat file with three
 %variables, xdat, ydat, and ydat2. For each pair (xdat, ydat) and (xdat,
@@ -23,6 +35,28 @@ treatment2 =[   152   152   151   143   161   142   142   141   161   135];
 %one is the best fit in each case? In at least one of the cases, do the
 %problem with both the polyfit/polyval functions and with the 'fit' function.
 
+[coeff,s]=polyfit(xdat,ydat,1);
+plot(xdat,ydat,'r.','MarkerSize','20');hold on;
+plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+hold off;
+[coeff,s]=polyfit(xdat,ydat,2);
+plot(xdat,ydat,'r.','MarkerSize','20');hold on;
+plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+hold off;
+[coeff,s]=polyfit(xdat,ydat,3);
+plot(xdat,ydat,'r.','MarkerSize','20');hold on;
+plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+hold off;
 
-
-
+[coeff,s]=polyfit(xdat,ydat2,1);
+plot(xdat,ydat2,'r.','MarkerSize','20');hold on;
+plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+hold off;
+[coeff,s]=polyfit(xdat,ydat2,2);
+plot(xdat,ydat2,'r.','MarkerSize','20');hold on;
+plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+hold off;
+[coeff,s]=polyfit(xdat,ydat2,3);
+plot(xdat,ydat2,'r.','MarkerSize','20');hold on;
+plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+hold off;
