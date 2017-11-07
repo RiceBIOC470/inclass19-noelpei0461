@@ -34,29 +34,45 @@ multcompare(stats)
 %ydat2), fit the data to a first, second and third order polynomial. Which
 %one is the best fit in each case? In at least one of the cases, do the
 %problem with both the polyfit/polyval functions and with the 'fit' function.
+file = load('data.mat');
+xdat = file.xdat;
+ydat = file.ydat;
+ydat2 = file.ydat2;
 
-[coeff,s]=polyfit(xdat,ydat,1);
-plot(xdat,ydat,'r.','MarkerSize','20');hold on;
-plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+[coeff,s]=polyfit(xdat',ydat',1);
+plot(xdat',ydat','r.','MarkerSize','20');hold on;
+plot(xdat',polyval(coeff,xdat'),'k-','LineWidth',3);
 hold off;
-[coeff,s]=polyfit(xdat,ydat,2);
-plot(xdat,ydat,'r.','MarkerSize','20');hold on;
-plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+[coeff,s]=polyfit(xdat',ydat',2);
+plot(xdat',ydat','r.','MarkerSize','20');hold on;
+plot(xdat',polyval(coeff,xdat'),'k-','LineWidth',3);
 hold off;
-[coeff,s]=polyfit(xdat,ydat,3);
-plot(xdat,ydat,'r.','MarkerSize','20');hold on;
-plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+[coeff,s]=polyfit(xdat',ydat',3);
+plot(xdat',ydat','r.','MarkerSize','20');hold on;
+plot(xdat',polyval(coeff,xdat'),'k-','LineWidth',3);
 hold off;
 
-[coeff,s]=polyfit(xdat,ydat2,1);
-plot(xdat,ydat2,'r.','MarkerSize','20');hold on;
-plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+[coeff,s]=polyfit(xdat',ydat2',1);
+plot(xdat',ydat2','r.','MarkerSize','20');hold on;
+plot(xdat',polyval(coeff,xdat'),'k-','LineWidth',3);
 hold off;
-[coeff,s]=polyfit(xdat,ydat2,2);
-plot(xdat,ydat2,'r.','MarkerSize','20');hold on;
-plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+[coeff,s]=polyfit(xdat',ydat2',2);
+plot(xdat',ydat2','r.','MarkerSize','20');hold on;
+plot(xdat',polyval(coeff,xdat'),'k-','LineWidth',3);
 hold off;
-[coeff,s]=polyfit(xdat,ydat2,3);
-plot(xdat,ydat2,'r.','MarkerSize','20');hold on;
-plot(xdat,polyval(coeff,xdat),'k-','LineWidth',3);
+[coeff,s]=polyfit(xdat',ydat2',3);
+plot(xdat',ydat2','r.','MarkerSize','20');hold on;
+plot(xdat',polyval(coeff,xdat'),'k-','LineWidth',3);
 hold off;
+
+f2_1=fit(xdat',ydat2','poly1');
+f2_2=fit(xdat',ydat2','poly2');
+f2_2=fit(xdat',ydat2','poly3');
+figure;
+plot(xdat',ydat2','k-','MarkerSize','20');
+hold on;
+plot(f2_1,'r');
+plot(f2_2,'g');
+plot(f2_3,'b');
+legend('data','order 1','order 2','order 3');
+% In both cases, 3rd order of nominal best fits the data.
