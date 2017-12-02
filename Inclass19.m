@@ -1,4 +1,10 @@
 %In class 19
+%GB comments
+1A 50 error is not calculated properly and not propely displayed. There are built in functions to determine standard deviation. Alternatively, the error could have been manually calculated using the standard deviation or standard error formula. Also, the error bars you made are not plotted correct. There should be no lines connecting error bars between experimental groups.  
+1B 100
+1C 100
+2. 100
+Overall 88
 
 % Problem 1. Imagine a clincal trial for two drugs that are intended to lower
 % cholesterol. Assume 30 subjects are randomly divided into 3 groups that
